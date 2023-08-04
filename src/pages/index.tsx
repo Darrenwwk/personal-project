@@ -70,7 +70,7 @@ const Home = () => {
                                 .typeString('吃饭啊？')
                                 .pauseFor(1000)
                                 .deleteChars(18)
-                                .typeString('跳的不错 继续努力吧 明天记得住好料给我')
+                                .typeString('跳的不错 继续努力吧 明天记得煮好料给我')
                                 .start();
                         }}
                     />
