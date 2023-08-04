@@ -7,6 +7,69 @@
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    letter-spacing: 1px;
-    @apply !scroll-smooth;
+    letter-spacing: 0.05em;
+    scroll-behavior: smooth;
+}
+
+header {
+    @apply duration-300;
+}
+
+header.hide {
+    transform: translateY(-80px);
+}
+
+.nav {
+    @apply !text-gray-400 hover:!text-secondary duration-300;
+}
+
+.nav.active {
+    @apply !text-primary font-bold;
+}
+
+.subNav {
+    @apply text-gray-500 hover:!text-secondary duration-300;
+}
+
+.subNav.active {
+    @apply text-primary;
+}
+
+.whatsApp .ant-float-btn-body {
+    @apply bg-green-500;
+}
+
+/* Pulsing effect */
+
+.whatsApp > span {
+    @apply absolute top-0 bottom-0 left-0 right-0 grid !w-full place-items-center;
+}
+
+.whatsApp > span {
+    width: 40px !important;
+}
+
+.whatsApp > span:before,
+.whatsApp > span:after {
+    content: '';
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: #00a99d;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.whatsApp > span:before {
+    animation: pulse 2s ease-out infinite;
+}
+.whatsApp > span:after {
+    animation: pulse 2s 1s ease-out infinite;
+}
+@keyframes pulse {
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }

@@ -3,8 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 import { Button, Form, Input, Modal } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import Layout from '@/components/layout';
+import Typewriter from 'typewriter-effect';
+import { GetStaticProps } from 'next';
 
 const Home = () => {
     const { t } = useTranslation(['common']);
@@ -37,72 +41,36 @@ const Home = () => {
     // });
 
     return (
-        <div className="flex items-center justify-center w-full h-screen">
-            <div className="w-full max-w-[400px]">
-                <Form form={loginForm} layout="vertical">
-                    <Form.Item
-                        label="Username"
-                        name="username"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Username is required',
-                            },
-                        ]}
-                    >
-                        <Input placeholder="Username" prefix={<UserOutlined />} />
-                    </Form.Item>
-                    <Form.Item
-                        label="Password"
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Password is required',
-                            },
-                        ]}
-                    >
-                        <Input.Password placeholder="Password" prefix={<LockOutlined />} />
-                    </Form.Item>
-                    <Button className="mt-3" type="primary" block onClick={onLoginHandler}>
-                        Login
-                    </Button>
-                </Form>
-                <div className="text-[12px] cursor-pointer hover:text-[#14aafd] mt-2" onClick={() => setModalOpen(true)}>
-                    Forget Password
-                </div>
+        <Layout activeMenu={['home']}>
+            <div className="flex items-center justify-center w-full h-screen">
+                <h1 className="text-lg text-primary sm:text-xl">
+                    <Typewriter
+                        onInit={(typewriter) => {
+                            typewriter
+                                .pauseFor(500)
+                                .changeDelay(200)
+                                .typeString('baby love you 不要亲亲抱抱 今天你睡地上')
+                                .pauseFor(1000)
+                                .deleteChars(13)
+                                .typeString('还是亲一口吧 你还是睡地上哦😘')
+                                .pauseFor(1000)
+                                .deleteChars(16)
+                                .typeString('ok la 亲亲抱抱爱你哟😘')
+                                .start();
+                        }}
+                    />
+                </h1>
             </div>
-            <Modal
-                title="Forget Password"
-                open={modalOpen}
-                onOk={onForgotPasswordHandler}
-                onCancel={() => setModalOpen(false)}
-                okText="Reset Password"
-                cancelText="Cancel"
-            >
-                <Form form={forgotPasswordForm} layout="vertical" className="mt-5">
-                    <Form.Item
-                        label={t('Email')}
-                        required
-                        name="email"
-                        rules={[
-                            {
-                                required: true,
-                                validator(_, value) {
-                                    console.log(value);
-                                    if (!value) {
-                                        return Promise.reject('Email is required');
-                                    }
-                                },
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-                </Form>
-            </Modal>
-        </div>
+        </Layout>
     );
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale as string, ['home', 'service', 'common', 'header', 'footer'])),
+        },
+    };
+};

@@ -7,9 +7,11 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: '#dff6ff',
-                rtmOrange: '#fdb83e',
-                skyBlue: '#3ebaeb',
+                primary: '#00A99D',
+                secondary: '#82CEC8',
+                'primary-dark': '#1D1D1D',
+                'secondary-dark': '#292929',
+                'off-white': '#F3F3F3',
             },
             fontFamily: {
                 ubuntu: ['var(--font-ubuntu)'],
