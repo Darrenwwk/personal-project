@@ -44,7 +44,7 @@ const Home = () => {
         <Layout activeMenu={['home']}>
             <div className="flex items-center justify-center w-full h-screen">
                 <h1 className="text-lg text-primary sm:text-xl">
-                    <Typewriter
+                    {/* <Typewriter
                         onInit={(typewriter) => {
                             typewriter
                                 .pauseFor(500)
@@ -56,6 +56,21 @@ const Home = () => {
                                 .pauseFor(1000)
                                 .deleteChars(16)
                                 .typeString('ok la 亲亲抱抱爱你哟😘')
+                                .start();
+                        }}
+                    /> */}
+                    <Typewriter
+                        onInit={(typewriter) => {
+                            typewriter
+                                .pauseFor(500)
+                                .changeDelay(200)
+                                .typeString('lilian 几点了还在那边跟我跳舞 不用睡觉啊？')
+                                .pauseFor(1000)
+                                .deleteChars(4)
+                                .typeString('吃饭啊？')
+                                .pauseFor(1000)
+                                .deleteChars(18)
+                                .typeString('跳的不错 继续努力吧 明天记得住好料给我')
                                 .start();
                         }}
                     />
