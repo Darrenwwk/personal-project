@@ -35,6 +35,10 @@ header.hide {
     @apply text-primary;
 }
 
+.whatsApp {
+    @apply bottom-10 right-10;
+}
+
 .whatsApp .ant-float-btn-body {
     @apply bg-green-500;
 }

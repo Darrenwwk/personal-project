@@ -43,7 +43,7 @@ const Home = () => {
     return (
         <Layout activeMenu={['home']}>
             <div className="flex items-center justify-center w-full h-screen">
-                <h1 className="text-lg text-primary sm:text-xl">
+                <h1 className="px-4 text-lg text-primary sm:text-xl">
                     {/* <Typewriter
                         onInit={(typewriter) => {
                             typewriter
