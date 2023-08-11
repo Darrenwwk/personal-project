@@ -132,7 +132,7 @@ const Header: React.FC<HeaderProps> = ({ activeMenu }) => {
                 open={open}
                 onClose={() => setOpen(false)}
                 headerStyle={{ borderBottom: '0px' }}
-                placement="left"
+                placement="right"
                 rootClassName="lg:hidden"
                 width={300}
             >
